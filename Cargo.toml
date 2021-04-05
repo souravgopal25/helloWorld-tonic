@@ -1,3 +1,4 @@
+#
 [package]
 name = "helloworld-tonic"
 version = "0.1.0"
@@ -5,5 +6,23 @@ authors = ["Sourav <souravgopal25@gmail.com>"]
 edition = "2018"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[[bin]] #Bin to run HelloWorld grpc server
+name = "helloworld-server"
+path = "src/server.rs"
+
+[[bin]] #Bin to run HelloWorld grpc server
+name = "helloworld-client"
+path = "src/client.rs"
 
 [dependencies]
+tonic = "0.4"
+prost = "0.7"
+tokio ={version="1.0",features=["macros","rt-multi-thread"]}
+
+
+[build-dependencies]
+tonic-build = "0.4"
+
+#We include tonic-build as a useful way to incorporate the generation of our client 
+# and server gRPC code into the build process of our application. 
+#We will setup this build process now:
